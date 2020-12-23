@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useRouter } from "next/router";
 import { css } from "@emotion/react";
 import LocationCarouselCard from "../components/locationCarouselCard";
 import Spacer from "../components/spacer";
@@ -6,9 +7,10 @@ import Spacer from "../components/spacer";
 interface HomeProps {}
 
 const Home: React.FC<HomeProps> = ({}) => {
+  const router = useRouter();
   return (
     // <div className="m-20 h-48">
-    <div className="grid grid-cols-2 gap-4 m-12">
+    <div className="grid grid-cols-2 gap-4 px-12">
       <div className="flex flex-col justify-between">
         <h1 className="text-6xl mt-24 leading-tight">
           Vacation, <br /> Your way.
@@ -19,7 +21,10 @@ const Home: React.FC<HomeProps> = ({}) => {
             placeholder="Take me away to..."
             className="flex-grow pl-4 mr-2"
           />
-          <button className="bg-blue-500 text-white h-full px-4 rounded-xl shadow-md">
+          <button
+            className="bg-blue-500 text-white h-full px-4 rounded-xl shadow-md"
+            onClick={() => router.push("/listings")}
+          >
             Search
           </button>
         </div>
@@ -61,7 +66,6 @@ const Home: React.FC<HomeProps> = ({}) => {
         className="w-full h-full shadow-md rounded-xl"
       />
     </div>
-    // </div>
   );
 };
 
