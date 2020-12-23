@@ -1,6 +1,8 @@
+/** @jsxImportSource @emotion/react */
 import * as React from "react";
 import { useRouter } from "next/router";
 import { css } from "@emotion/react";
+import SearchSVG from "../public/images/search.svg";
 import LocationCarouselCard from "../components/locationCarouselCard";
 import Spacer from "../components/spacer";
 
@@ -9,7 +11,6 @@ interface HomeProps {}
 const Home: React.FC<HomeProps> = ({}) => {
   const router = useRouter();
   return (
-    // <div className="m-20 h-48">
     <div className="grid grid-cols-2 gap-4 px-12">
       <div className="flex flex-col justify-between">
         <h1 className="text-6xl mt-24 leading-tight">
@@ -22,9 +23,17 @@ const Home: React.FC<HomeProps> = ({}) => {
             className="flex-grow pl-4 mr-2"
           />
           <button
-            className="bg-blue-500 text-white h-full px-4 rounded-xl shadow-md"
+            className="bg-blue-500 text-white w-28 h-full px-3 rounded-xl shadow-md flex justify-between items-center"
             onClick={() => router.push("/listings")}
           >
+            <img
+              src={SearchSVG}
+              alt="Search Icon"
+              css={css`
+                filter: invert();
+              `}
+              className="w-5 h-5"
+            />
             Search
           </button>
         </div>

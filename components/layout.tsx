@@ -6,24 +6,25 @@ import Spacer from "./spacer";
 
 interface LayoutProps {}
 
-const NavLink = styled(Link)`
-  font-weight: bold;
-  font-size: 50px;
-`;
+const NavLink = ({ href, children, ...props }) => (
+  <Link href={href} passHref>
+    <a className="font-semibold">{children}</a>
+  </Link>
+);
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div>
       <nav className="flex justify-between px-12 pt-8">
-        <NavLink href="/">
+        <Link href="/" scroll={false}>
           <img src={LogoMain} alt="Arrived Logo" className="cursor-pointer" />
-        </NavLink>
+        </Link>
         <div>
-          <NavLink href="/">About Us</NavLink>
-          <Spacer width={5} />
-          <NavLink href="/">Contact</NavLink>
-          <Spacer width={5} />
-          <NavLink href="/">Investors</NavLink>
+          <NavLink href="/home">About us</NavLink>
+          <Spacer width={4} />
+          <NavLink href="/home">Contact</NavLink>
+          <Spacer width={4} />
+          <NavLink href="/home">Investors</NavLink>
         </div>
       </nav>
       {children}
