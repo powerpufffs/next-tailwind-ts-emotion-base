@@ -26,6 +26,7 @@ interface ListingProps {
   guests: number;
   startingAtPrice: number;
   startingAtDuration: string;
+  onClick: () => void;
 }
 
 const Listing: React.FC<ListingProps> = ({
@@ -35,11 +36,15 @@ const Listing: React.FC<ListingProps> = ({
   beds,
   baths,
   guests,
+  onClick,
   startingAtPrice,
   startingAtDuration,
 }) => {
   return (
-    <div className="rounded-2xl h-36 flex justify-between bg-gray-100">
+    <div
+      className="rounded-2xl h-36 flex justify-between bg-gray-100"
+      onClick={onClick}
+    >
       <ImageContainer imageURL={imageURL} className="rounded-2xl" />
       <div className="flex flex-col items-end justify-between pr-4 py-3">
         <h1 className="text-black z-10 text-bold capitalize txt-2xl">
