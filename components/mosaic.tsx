@@ -27,16 +27,21 @@ const Mosaic: React.FC<MosaicProps> = ({}) => {
         display: grid;
         grid-gap: 8px;
         grid-template-rows: repeat(20, 100px);
-        grid-template-columns: repeat(3, minmax(100px, 1fr));
+        grid-template-columns: repeat(11, 40px) 1fr;
         grid-auto-flow: dense;
-
+        .tile:first-child {
+          grid-column: span 6;
+        }
         .tile:nth-child(3n) {
-          grid-column: span 2;
+          grid-column: span 4;
+        }
+        .tile:nth-child(5n) {
+          grid-column: span 5;
         }
       `}
     >
       {imageURLs.map((url) => (
-        <Hoverable className="tile">
+        <Hoverable className="tile rounded-2xl col-span-3">
           <img src={url} className="h-full w-full rounded-lg shadow-lg" />
         </Hoverable>
       ))}
